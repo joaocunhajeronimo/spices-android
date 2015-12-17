@@ -4,8 +4,9 @@ class Alert < BaseComponent
 
   def self.with_title_and_msg(title, msg)
     object = new
-    object.title = title
-    object.msg = msg
+    title_descendent = Label.with_text title
+    msg_descendent = Label.with_text msg
+    object.descendants = [title_descendent, msg_descendent]
     object
   end
 
@@ -15,10 +16,5 @@ class Alert < BaseComponent
     else
       :'view:\'_UIAlertControllerView\''
     end
-  end
-
-  def visible?
-    query_properties(:title) == @title &&
-      query_properties(:message) == @msg
   end
 end

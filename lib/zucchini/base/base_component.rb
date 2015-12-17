@@ -2,8 +2,9 @@ class BaseComponent
   attr_reader :accessibility_label
   attr_reader :text
   attr_reader :parent
+  attr_reader :descendants
 
-  # initialize
+  # initializers
 
   def self.with_text(text)
     object = new
@@ -23,6 +24,34 @@ class BaseComponent
     object
   end
 
+  def self.with_descendants(descendants)
+    object = new
+    object.descendants = descendants
+    object
+  end
+
+  def with_text(text)
+    @text = text
+    self
+  end
+
+  def with_parent(parent)
+    @parent = parent
+    self
+  end
+
+  def with_accessibility_label(accessibility_label)
+    @accessibility_label = accessibility_label
+    self
+  end
+
+  def with_descendants(descendants)
+    @descendants = descendants
+    self
+  end
+
+  # setters
+
   def text=(text)
     @text = text
     self
@@ -38,12 +67,63 @@ class BaseComponent
     self
   end
 
+  def descendants=(descendants)
+    @descendants = descendants
+    self
+  end
+
+  # subscript
+
+  def [](key)
+    query_properties key
+  end
+
+  # abstract
+
   def type
     fail NotImplementedError, "This method should be implemented in a subclass of #{self.class}"
   end
 
+  # diggers
+
   def label
     Label.with_parent self
+  end
+
+  def button
+    Button.with_parent self
+  end
+
+  def Switch
+    Switch.with_parent self
+  end
+
+  def tabbar_button
+    TabbarButton.with_parent self
+  end
+
+  def table_view_cell
+    TableViewCell.with_parent self
+  end
+
+  def table_view
+    TableView.with_parent self
+  end
+
+  def view
+    View.with_parent self
+  end
+
+  def textfield
+    Textfield.with_parent self
+  end
+
+  def web_view
+    WebView.with_parent self
+  end
+
+  def web_view_element
+    WebViewElement.with_parent self
   end
 
   # computed properties
@@ -53,10 +133,19 @@ class BaseComponent
     string += " {accessibilityLabel = '#{accessibility_label}'}" unless accessibility_label.nil?
     string += " {text = '#{text}'}" unless text.nil?
 
+    current_query_string = string
+
+    @descendants ||= []
+    @descendants.each do |descendant|
+      string += ' descendant ' + descendant.query_string + ' parent ' + current_query_string
+    end
+
     string = parent.query_string + " #{string}" unless parent.nil?
 
     string
   end
+
+  # query
 
   def query_properties(*args)
     safe_query(query_string, *args)
@@ -66,46 +155,28 @@ class BaseComponent
     safe_query(query_string)
   end
 
+  # touch
+
   def touch
     safe_touch query_string
   end
 
-  def wait_for_displayed
-    Wait.for { displayed? }
+  # visible
+
+  def wait_for_visible
+    Wait.for { visible? }
   end
 
-  def wait_for_not_displayed
-    Wait.for { not_displayed? }
+  def wait_for_not_visible
+    Wait.for { not_visible? }
   end
 
-  def displayed?
+  def visible?
     zucchini.element_exists query_string
   end
 
-  def not_displayed?
+  def not_visible?
     zucchini.element_does_not_exist query_string
-  end
-
-  # query properties
-
-  def text_content
-    query_properties(:text)
-  end
-
-  def text_content?(text)
-    text_content == text
-  end
-
-  def frame
-    query_properties(:frame)
-  end
-
-  def x
-    frame['X']
-  end
-
-  def y
-    frame['Y']
   end
 
   private
@@ -117,7 +188,7 @@ class BaseComponent
   def safe_query(query, *args)
     Logger.debug "QUERY: #{query}".light_green.bold
 
-    wait_for_displayed
+    wait_for_visible
 
     query_map = zucchini.query(query, *args).first
 
@@ -127,7 +198,7 @@ class BaseComponent
   end
 
   def safe_touch(touch_query)
-    wait_for_displayed
+    wait_for_visible
 
     zucchini.touch touch_query
     Wait.for_ui_animation_to_end

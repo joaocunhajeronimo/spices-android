@@ -9,6 +9,6 @@ module Editable
     # Zucchini.instance.map(query_string, :setText, '')
     Zucchini.instance.map(query_string, :setText, text)
 
-    Zucchini.keyboard.done
+    Keyboard.done
   end
 end

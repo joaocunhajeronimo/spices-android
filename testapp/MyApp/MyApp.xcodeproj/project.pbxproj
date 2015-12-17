@@ -13,6 +13,8 @@
 		1b7f70e309283d0aa943b4e8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A4FCDE1C22F784003F4D81 /* Foundation.framework */; };
 		21e8ab253c8de2615795abd5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A7E67C1C22F74400A07DF0 /* Main.storyboard */; };
 		44fa1d346f0e1607b24ab7a5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59A7E6811C22F74400A07DF0 /* LaunchScreen.storyboard */; };
+		59784DA91C232CE000C63AED /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59784DA81C232CE000C63AED /* ThirdViewController.m */; };
+		59A1CDA01C236FF3007A5CA3 /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59784DA81C232CE000C63AED /* ThirdViewController.m */; };
 		59A4FCDF1C22F784003F4D81 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A4FCDE1C22F784003F4D81 /* Foundation.framework */; };
 		59A4FCE11C22F788003F4D81 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A4FCE01C22F788003F4D81 /* UIKit.framework */; };
 		59A7E6721C22F74400A07DF0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A7E6711C22F74400A07DF0 /* main.m */; };
@@ -33,6 +35,8 @@
 /* Begin PBXFileReference section */
 		520d9827da30bcb1e5a20e5f /* CFNetwork.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		590662B11C22F86300D4362E /* MyApp-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyApp-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		59784DA71C232CE000C63AED /* ThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewController.h; sourceTree = "<group>"; };
+		59784DA81C232CE000C63AED /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		59A4FCDE1C22F784003F4D81 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		59A4FCE01C22F788003F4D81 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		59A7E66D1C22F74400A07DF0 /* MyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +119,8 @@
 				59A7E6771C22F74400A07DF0 /* FirstViewController.m */,
 				59A7E6791C22F74400A07DF0 /* SecondViewController.h */,
 				59A7E67A1C22F74400A07DF0 /* SecondViewController.m */,
+				59784DA71C232CE000C63AED /* ThirdViewController.h */,
+				59784DA81C232CE000C63AED /* ThirdViewController.m */,
 				59A7E67C1C22F74400A07DF0 /* Main.storyboard */,
 				59A7E67F1C22F74400A07DF0 /* Assets.xcassets */,
 				59A7E6811C22F74400A07DF0 /* LaunchScreen.storyboard */,
@@ -231,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				59A7E67B1C22F74400A07DF0 /* SecondViewController.m in Sources */,
+				59784DA91C232CE000C63AED /* ThirdViewController.m in Sources */,
 				59A7E6751C22F74400A07DF0 /* AppDelegate.m in Sources */,
 				59A7E6781C22F74400A07DF0 /* FirstViewController.m in Sources */,
 				59A7E6721C22F74400A07DF0 /* main.m in Sources */,
@@ -241,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59A1CDA01C236FF3007A5CA3 /* ThirdViewController.m in Sources */,
 				140d0b9a80b60ef5db10dda4 /* SecondViewController.m in Sources */,
 				8ff841661cb3e78471f4ad67 /* AppDelegate.m in Sources */,
 				146abd200e4cf2b1d7137512 /* FirstViewController.m in Sources */,
