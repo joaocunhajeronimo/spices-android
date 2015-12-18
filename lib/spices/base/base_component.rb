@@ -100,7 +100,7 @@ class BaseComponent
   # subscript
 
   def [](*args)
-    query_properties *args
+    query_properties(*args)
   end
 
   # abstract
@@ -110,6 +110,10 @@ class BaseComponent
   end
 
   # diggers
+
+  def scroll_view
+    ScrollView.with_parent self
+  end
 
   def label
     Label.with_parent self
@@ -153,6 +157,20 @@ class BaseComponent
 
   def web_view_element
     WebViewElement.with_parent self
+  end
+
+  # properties
+
+  def frame
+    self[:frame]
+  end
+
+  def height
+    frame['Height']
+  end
+
+  def width
+    frame['Width']
   end
 
   # computed properties

@@ -9,6 +9,22 @@ class WebView < BaseComponent
     element
   end
 
+  def url
+    self['query', 'request', 'URL']
+  end
+
+  def reload
+    self['reload']
+  end
+
+  def go_back
+    self['goBack']
+  end
+
+  def go_forward
+    self['goForward']
+  end
+
   private
 
   def type

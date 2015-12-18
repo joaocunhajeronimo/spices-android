@@ -1,7 +1,6 @@
 class ActivityIndicatorView < BaseComponent
-
   def animating?
-    self[:isAnimating]
+    self['isAnimating']
   end
 
   private

@@ -23,7 +23,7 @@
     self.tableView.accessibilityLabel = @"Text_TableView";
 
     NSMutableArray *tmp = [@[] mutableCopy];
-    for (NSInteger i = 0; i <= 10; i++) {
+    for (NSInteger i = 0; i <= 100; i++) {
         [tmp addObject:[NSString stringWithFormat:@"Text %ld", (long)i]];
     }
 

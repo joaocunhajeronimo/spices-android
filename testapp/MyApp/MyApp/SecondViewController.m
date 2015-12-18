@@ -8,7 +8,10 @@
 
 #import "SecondViewController.h"
 
-@interface SecondViewController ()
+@interface SecondViewController ()<UISearchBarDelegate>
+
+@property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, weak) IBOutlet UIWebView *webView;
 
 @end
 
@@ -22,6 +25,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchBar resignFirstResponder];
+
+    NSString *urlString = [NSString stringWithFormat:@"https://www.google.fr/search?q=%@", searchBar.text];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:request];
 }
 
 @end

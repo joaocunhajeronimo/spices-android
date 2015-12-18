@@ -5,12 +5,9 @@
 AllCops:
   # Include gemspec and Rakefile
   Include:
-    - 'FyberTestApp/features/**/*'
+    - 'lib/**/*'
   Exclude:
-    - 'FyberTestApp/features/step_definitions/**/*'
-    - 'FyberTestApp/features/scenarios/**/*'
-  #   # - 'FyberTestApp/features/support/**/*'
-  #   - 'FyberTestApp/features/step_definitions/**/*'
+    - testapp/**/*
   # By default, the rails cops are not run. Override in project or home
   # directory .rubocop.yml files, or by giving the -R/--rails option.
   RunRailsCops: false
@@ -35,7 +32,7 @@ Metrics/CyclomaticComplexity:
 Metrics/ClassLength:
   Description: Avoid classes longer than 100 lines of code.
   CountComments: false
-  Max: 100
+  Max: 200
 
 Metrics/LineLength:
   Description: Limit lines to 80 characters.

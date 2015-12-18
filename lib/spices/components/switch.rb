@@ -22,6 +22,6 @@ class Switch < BaseComponent
   end
 
   def property_is_on
-    self[:isOn]
+    self['isOn']
   end
 end
