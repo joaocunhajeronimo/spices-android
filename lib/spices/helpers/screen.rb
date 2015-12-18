@@ -1,6 +1,6 @@
 class Screen
   def self.default_device
-    Zucchini.instance.default_device
+    Spices.instance.default_device
   end
 
   def self.height

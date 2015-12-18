@@ -1,19 +1,19 @@
-# Zucchini
+# Spices
 _A structured layer between Cucumber and Calabash_
 
-Zucchini is software layer written in Ruby that is located between Cucumber and Calabash.
+Spices is software layer written in Ruby that is located between Cucumber and Calabash.
 
 ## Usage
 
 ### Writing Step Definitions
 
-When writing step definitions the `Zucchini` class should always be your starting point. The class provides methods to access the different screens and products of the application. Every screen and product also provide different methods in order to interact with them.
+When writing step definitions the `Spices` class should always be your starting point. The class provides methods to access the different screens and products of the application. Every screen and product also provide different methods in order to interact with them.
 
 Here's for instance, how to start the SDK
 
 ```gherkin
 When /^I start the SDK$/ do
-  Zucchini.application.start_screen.start_sdk
+  Spices.application.start_screen.start_sdk
 end
 ```
 
@@ -21,7 +21,7 @@ or how to close the Offer Wall
 
 ```gherkin
 When /^I close the OfferWall$/ do
-  Zucchini.sdk.offer_wall.close
+  Spices.sdk.offer_wall.close
 end
 ```
 
@@ -29,11 +29,11 @@ end
 
 The framework currently contains all the classes and methods needed to support the current state of the test suite. When writing new scenarios you might have to create screens or products or add methods to the existing ones.
 
-At any time you can check the consistency of what you're adding to the framework by launching `irb` in the zucchini directory and requiring `zucchini.rb`
+At any time you can check the consistency of what you're adding to the framework by launching `irb` in the spices directory and requiring `spices.rb`
 
 ```shell
 $ irb
-2.2.2 :001 > require './zucchini'
+2.2.2 :001 > require './spices'
  => true
 ```
 

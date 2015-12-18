@@ -1,20 +1,19 @@
 class BaseComponent
-  attr_reader :accessibility_label
-  attr_reader :text
   attr_reader :parent
   attr_reader :descendants
+  attr_reader :attributes
 
   # initializers
 
   def self.with_text(text)
     object = new
-    object.text = text
+    object.attributes.push "text = '#{text}'"
     object
   end
 
   def self.with_accessibility_label(accessibility_label)
     object = new
-    object.accessibility_label = accessibility_label
+    object.attributes.push "accessibilityLabel = '#{accessibility_label}'"
     object
   end
 
@@ -30,8 +29,25 @@ class BaseComponent
     object
   end
 
+  def self.with_attribute(attribute)
+    object = new
+    object.attributes.push attribute
+    object
+  end
+
+  def self.all
+    object = new
+    object.all
+    object
+  end
+
+  def with_attribute(attribute)
+    attributes.push attribute
+    self
+  end
+
   def with_text(text)
-    @text = text
+    attributes.push "text = '#{text}'"
     self
   end
 
@@ -41,7 +57,7 @@ class BaseComponent
   end
 
   def with_accessibility_label(accessibility_label)
-    @accessibility_label = accessibility_label
+    attributes.push "accessibilityLabel = '#{accessibility_label}'"
     self
   end
 
@@ -51,6 +67,15 @@ class BaseComponent
   end
 
   # setters
+
+  def attributes
+    @attributes ||= []
+  end
+
+  def all
+    @all = true
+    self
+  end
 
   def text=(text)
     @text = text
@@ -74,8 +99,8 @@ class BaseComponent
 
   # subscript
 
-  def [](key)
-    query_properties key
+  def [](*args)
+    query_properties *args
   end
 
   # abstract
@@ -90,15 +115,19 @@ class BaseComponent
     Label.with_parent self
   end
 
+  def segment
+    Segment.with_parent self
+  end
+
   def button
     Button.with_parent self
   end
 
-  def Switch
+  def switch
     Switch.with_parent self
   end
 
-  def tabbar_button
+  def tab_bar_button
     TabbarButton.with_parent self
   end
 
@@ -130,8 +159,11 @@ class BaseComponent
 
   def query_string
     string = "#{type}"
-    string += " {accessibilityLabel = '#{accessibility_label}'}" unless accessibility_label.nil?
-    string += " {text = '#{text}'}" unless text.nil?
+
+    @attributes ||= []
+    @attributes.each do |attribute|
+      string += " {#{attribute}}"
+    end
 
     current_query_string = string
 
@@ -140,16 +172,12 @@ class BaseComponent
       string += ' descendant ' + descendant.query_string + ' parent ' + current_query_string
     end
 
-    string = parent.query_string + " #{string}" unless parent.nil?
+    string = parent.query_string + " descendant #{string}" unless parent.nil?
 
     string
   end
 
   # query
-
-  def query_properties(*args)
-    safe_query(query_string, *args)
-  end
 
   def query
     safe_query(query_string)
@@ -172,27 +200,32 @@ class BaseComponent
   end
 
   def visible?
-    zucchini.element_exists query_string
+    spices.element_exists query_string
   end
 
   def not_visible?
-    zucchini.element_does_not_exist query_string
+    spices.element_does_not_exist query_string
   end
 
   private
 
-  def zucchini
-    Zucchini.instance
+  def spices
+    Spices.instance
+  end
+
+  def query_properties(*args)
+    properties = spices.map(query_string, *args)
+    properties = properties.first unless @all
+    properties
   end
 
   def safe_query(query, *args)
-    Logger.debug "QUERY: #{query}".light_green.bold
+    Logger.debug "QUERY: #{query}"
 
     wait_for_visible
 
-    query_map = zucchini.query(query, *args).first
-
-    Logger.debug "MAP: #{query_map}".light_blue.bold
+    query_map = spices.query(query, *args)
+    query_map = query_map.first unless @all
 
     query_map
   end
@@ -200,7 +233,7 @@ class BaseComponent
   def safe_touch(touch_query)
     wait_for_visible
 
-    zucchini.touch touch_query
+    spices.touch touch_query
     Wait.for_ui_animation_to_end
   end
 end

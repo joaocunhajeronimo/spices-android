@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
-        <!--First View Controller-->
+        <!--First View-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" sceneMemberID="viewController">
+                <viewController title="First View" id="9pv-A4-QxB" customClass="FirstViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -73,7 +73,7 @@
                             <constraint firstItem="K6v-iV-acc" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="33.5" id="w25-NB-3fi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="LcQ-lm-YCt"/>
+                    <navigationItem key="navigationItem" title="First View" id="LcQ-lm-YCt"/>
                     <connections>
                         <outlet property="textfield" destination="K6v-iV-acc" id="RXm-uB-aap"/>
                     </connections>
@@ -82,10 +82,10 @@
             </objects>
             <point key="canvasLocation" x="1562" y="-810"/>
         </scene>
-        <!--Second View Controller-->
+        <!--Second View-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" sceneMemberID="viewController">
+                <viewController title="Second View" id="8rJ-Kc-sve" customClass="SecondViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -109,6 +109,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kfk-f6-zqQ">
+                                <rect key="frame" x="-1" y="64" width="600" height="44"/>
+                                <animations/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -119,16 +124,16 @@
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mzA-AD-6L2"/>
+                    <navigationItem key="navigationItem" title="Second View" id="mzA-AD-6L2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1562" y="0.0"/>
         </scene>
-        <!--Third View Controller-->
+        <!--Third View-->
         <scene sceneID="bhj-KJ-6TE">
             <objects>
-                <tableViewController id="TFx-As-Xzg" customClass="ThirdViewController" sceneMemberID="viewController">
+                <tableViewController title="Third View" id="TFx-As-Xzg" customClass="ThirdViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Bpo-JH-YbI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -152,7 +157,7 @@
                             <outlet property="delegate" destination="TFx-As-Xzg" id="LXX-Cx-5WK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="qBO-JZ-rpK"/>
+                    <navigationItem key="navigationItem" title="Third View" id="qBO-JZ-rpK"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pcX-JJ-PqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

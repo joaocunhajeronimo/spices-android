@@ -1,4 +1,4 @@
-require './zucchini/mixins/scrollable'
+require './spices/mixins/scrollable'
 
 class WebView < BaseComponent
   include Scrollable

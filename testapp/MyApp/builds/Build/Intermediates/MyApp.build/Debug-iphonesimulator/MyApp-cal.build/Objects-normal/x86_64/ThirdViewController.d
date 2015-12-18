@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/tito/Documents/workspace/zucchini/testapp/MyApp/MyApp/ThirdViewController.m \
-  /Users/tito/Documents/workspace/zucchini/testapp/MyApp/MyApp/ThirdViewController.h
+  /Users/tito/Documents/workspace/spices/testapp/MyApp/MyApp/ThirdViewController.m \
+  /Users/tito/Documents/workspace/spices/testapp/MyApp/MyApp/ThirdViewController.h

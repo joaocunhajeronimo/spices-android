@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		590662AF1C22F82300D4362E /* MyApp copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MyApp copy-Info.plist"; path = "/Users/tito/Documents/workspace/zucchini/testapp/MyApp/MyApp copy-Info.plist"; sourceTree = "<absolute>"; };
+		590662AF1C22F82300D4362E /* MyApp copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MyApp copy-Info.plist"; path = "/Users/tito/Documents/workspace/spices/testapp/MyApp/MyApp copy-Info.plist"; sourceTree = "<absolute>"; };
 		59A4FCDE1C22F784003F4D81 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		59A4FCE01C22F788003F4D81 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		59A7E66D1C22F74400A07DF0 /* MyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };

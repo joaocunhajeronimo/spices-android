@@ -1,7 +1,7 @@
+require './spices/mixins/selectable'
+
 class TableViewCell < BaseComponent
-  def selected?
-    query_properties :isSelected
-  end
+  include Selectable
 
   private
 

@@ -1,4 +1,4 @@
-class TabbarButton < BaseComponent
+class TabBarButton < BaseComponent
   private
 
   def type

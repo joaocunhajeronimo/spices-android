@@ -1,4 +1,4 @@
-require './zucchini/mixins/editable'
+require './spices/mixins/editable'
 
 class Textfield < BaseComponent
   include Editable

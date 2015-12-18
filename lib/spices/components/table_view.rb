@@ -1,4 +1,4 @@
-require './zucchini/mixins/scrollable'
+require './spices/mixins/scrollable'
 
 class TableView < BaseComponent
   include Scrollable

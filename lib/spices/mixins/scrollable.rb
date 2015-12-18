@@ -1,10 +1,10 @@
 module Scrollable
   def scroll_up
-    Zucchini.instance.scroll(query_string, :up)
+    Spices.instance.scroll(query_string, :up)
   end
 
   def scroll_down
-    Zucchini.instance.scroll(query_string, :down)
+    Spices.instance.scroll(query_string, :down)
   end
 
   def scroll_bottom

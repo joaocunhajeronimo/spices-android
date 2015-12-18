@@ -7,8 +7,6 @@ class Switch < BaseComponent
     touch if on?
   end
 
-  private
-
   def on?
     property_is_on == 1
   end
@@ -17,11 +15,13 @@ class Switch < BaseComponent
     property_is_on == 0
   end
 
+  private
+
   def type
     :switch
   end
 
   def property_is_on
-    query_properties(:isOn)
+    self[:isOn]
   end
 end

@@ -13,7 +13,7 @@
 ########################################
 
 require 'calabash-cucumber/launcher'
-require 'zucchini'
+require 'spices'
 require 'colorize'
 
 # APP_BUNDLE_PATH = "#{ENV['HOME']}/Library/Developer/Xcode/DerivedData/??/Build/Products/Calabash-iphonesimulator/??.app"
