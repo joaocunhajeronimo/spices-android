@@ -5,75 +5,12 @@ Spices is software layer written in Ruby that is located between Cucumber and Ca
 
 ## Usage
 
-### Writing Step Definitions
-
-When writing step definitions the `Spices` class should always be your starting point. The class provides methods to access the different screens and products of the application. Every screen and product also provide different methods in order to interact with them.
-
-Here's for instance, how to start the SDK
-
-```gherkin
-When /^I start the SDK$/ do
-  Spices.application.start_screen.start_sdk
-end
-```
-
-or how to close the Offer Wall
-
-```gherkin
-When /^I close the OfferWall$/ do
-  Spices.sdk.offer_wall.close
-end
-```
-
-### Feed the framework
-
-The framework currently contains all the classes and methods needed to support the current state of the test suite. When writing new scenarios you might have to create screens or products or add methods to the existing ones.
-
-At any time you can check the consistency of what you're adding to the framework by launching `irb` in the spices directory and requiring `spices.rb`
-
-```shell
-$ irb
-2.2.2 :001 > require './spices'
- => true
-```
-
-#### Create Screens
-
-Screens are located in the `application/screens` directory. They are basically classes inheriting from `BaseScreen`. If you ever have to create one, just create a file in this directory (e.g. `product_screen.rb`). This file should contain the following
+With Spices, you can create components
 
 ```ruby
-class ProductScreen < BaseScreen
-  def do_stuff
-
-  end
-end
-```
-
-Then make sure to require the file and create a method that returns the screen in the `application.rb`
-
-```ruby
-require './application/screens/product_screen'
-
-...
-
-def product_screen
-  ProductScreen.new
-end
-```
-
-#### Interact with the application
-
-In the methods you define in the screen classes, you will interact with the application using components.
-
-You can create components based on their:
-- accessibility label (iOS)
-- text
-- id (Android)
-
-```ruby
-button = Button.with_accessibility_label('StartSDK_Button')
-label = Label.with_text('Offer available')
-checkbox = Checkbox.with_id('UseStagingUrl_Checkbox')
+textfield = Textfield.new
+button = Button.with_accessibility_label 'StartSDK_Button'
+label = Label.with_text 'Offer available'
 ```
 
 Once you have created this components you can query them or one of their properties or interact with them
