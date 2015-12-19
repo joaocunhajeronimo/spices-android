@@ -202,7 +202,7 @@ class BaseComponent
   # query
 
   def query
-    safe_query(query_string)
+    safe_query query_string
   end
 
   # touch
@@ -232,7 +232,7 @@ class BaseComponent
   private
 
   def spices
-    Spices.instance
+    Spices.world
   end
 
   def query_properties(*args)
@@ -243,7 +243,7 @@ class BaseComponent
 
   def safe_query(query, *args)
     Logger.debug "QUERY: #{query}"
-
+    
     wait_for_visible
 
     query_map = spices.query(query, *args)

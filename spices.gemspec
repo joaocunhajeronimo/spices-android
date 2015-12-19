@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'spices'
-  s.version     = '0.0.1'
+  s.version     = '0.0.0'
   s.date        = '2015-12-28'
   s.summary     = "Software layer between Calabash and Cucumber"
   s.description = "A gem that makes the use of Calabash way simpler and straightforward"

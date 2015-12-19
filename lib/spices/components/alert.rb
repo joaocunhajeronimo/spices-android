@@ -11,7 +11,7 @@ class Alert < BaseComponent
   end
 
   def type
-    if Spices.instance.server_version['iOS_version'] == '7.1.0'
+    if Spices.world.server_version['iOS_version'] == '7.1.0'
       :'view:\'_UIModalItemRepresentationView\''
     else
       :'view:\'_UIAlertControllerView\''

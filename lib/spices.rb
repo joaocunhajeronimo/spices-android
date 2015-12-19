@@ -1,15 +1,21 @@
-# TODO: Use yard syntax documentation for the public API
-require 'awesome_print'
-
 class Spices
-  require 'calabash-cucumber/wait_helpers'
-  require 'calabash-cucumber/operations'
-
-  include Calabash::Cucumber::Operations
+  attr_accessor :world
 
   def self.instance
     @spices ||= Spices.new
   end
+
+  def self.world=(world)
+    instance.world = world
+  end
+
+  def self.world
+    instance.world
+  end
+end
+
+Before do |scenario|
+  Spices.world = self
 end
 
 require './spices/base/base_component'
