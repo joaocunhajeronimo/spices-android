@@ -10,5 +10,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.homepage    = 'http://rubygems.org/gems/spices'
   s.license     = 'MIT'
-  s.add_dependency 'calabash-cucumber', ['>= 1.6.0', '< 1.7.0']
+  s.add_dependency 'calabash-cucumber', '1.6.4'
 end
