@@ -47,4 +47,5 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://rubygems.org/gems/spices'
   s.license     = 'MIT'
   s.add_dependency('awesome_print', '~> 1.6')
+  s.add_dependency('calabash-cucumber', '~> 0.16')
 end

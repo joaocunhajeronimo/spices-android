@@ -14,7 +14,7 @@ class TableView < BaseComponent
   end
 
   def number_of_rows_in_section(section)
-    self['numberOfRowsInSection:', 0]
+    self['numberOfRowsInSection:', section]
   end
 
   private

@@ -16,7 +16,7 @@ class WebView < BaseComponent
   end
 
   def evaluate_javascript(javascript)
-    self['query', {calabashStringByEvaluatingJavaScript: javascript}]
+    self['query', { calabashStringByEvaluatingJavaScript: javascript }]
   end
 
   def url

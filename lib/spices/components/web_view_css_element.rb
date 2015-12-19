@@ -1,4 +1,3 @@
-# TODO: Add xpath tood
 class WebViewCssElement < BaseComponent
   attr_accessor :css
 
