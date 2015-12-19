@@ -155,8 +155,12 @@ class BaseComponent
     WebView.with_parent self
   end
 
-  def web_view_element
-    WebViewElement.with_parent self
+  def css_element
+    WebViewCssElement.with_parent self
+  end
+
+  def xpath_element
+    WebViewXpathElement.with_parent self
   end
 
   # properties

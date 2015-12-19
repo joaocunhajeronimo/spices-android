@@ -4,9 +4,19 @@ class WebView < BaseComponent
   include Scrollable
 
   def element_with_css(css)
-    element = WebViewElement.with_parent(self)
+    element = WebViewCssElement.with_parent(self)
     element.css = css
     element
+  end
+
+  def element_with_xpath(xpath)
+    element = WebViewXpathElement.with_parent(self)
+    element.xpath = xpath
+    element
+  end
+
+  def evaluate_javascript(javascript)
+    self['query', {calabashStringByEvaluatingJavaScript: javascript}]
   end
 
   def url
