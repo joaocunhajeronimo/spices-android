@@ -1,4 +1,4 @@
-require './spices/mixins/editable'
+require 'spices/mixins/editable'
 
 class TextView < BaseComponent
   include Editable

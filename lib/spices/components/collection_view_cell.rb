@@ -1,4 +1,4 @@
-require './spices/mixins/selectable'
+require 'spices/mixins/selectable'
 
 class CollectionViewCell < BaseComponent
   include Selectable

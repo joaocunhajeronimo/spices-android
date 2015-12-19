@@ -1,4 +1,4 @@
-require './spices/mixins/scrollable'
+require 'spices/mixins/scrollable'
 
 class ScrollView < BaseComponent
   include Scrollable
