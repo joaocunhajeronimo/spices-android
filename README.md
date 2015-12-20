@@ -32,6 +32,8 @@ require 'spices'
 
 ## Usage
 
+You can also clone the [spices_testapp](https://github.com/TitouanVanBelle/spices_testapp) repository to see Spices in action in an iOS application.
+
 ### Create Components
 
 With Spices, you can create components
