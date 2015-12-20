@@ -243,7 +243,7 @@ class BaseComponent
   end
 
   def build_equal_attribute(name, value)
-    "#{name} = '#{value}'"
+    "#{name} = \"#{value}\""
   end
 
   private
