@@ -6,29 +6,35 @@ class BaseComponent
   def self.attributes(*args)
     args.each do |arg|
       with_method_symb = :"with_#{arg}"
+      setter_symb = :"#{arg}="
       attribute_key = arg.to_s.split('_').inject([]) { |a, e| a.push(a.empty? ? e : e.capitalize) }.join
 
-      define_singleton_method with_method_symb do |attribute_value|
-        object = new
-        object.add_attribute object.build_equal_attribute(attribute_key, attribute_value)
-        object
-      end
-
-      define_method with_method_symb do |attribute_value|
-        add_attribute build_equal_attribute(attribute_key, attribute_value)
-        self
-      end
-
-      setter_symb = :"#{arg}="
-      define_method setter_symb do |attribute_value|
-        add_attribute build_equal_attribute(attribute_key, attribute_value)
-        self
-      end
+      create_singleton_with_methods(with_method_symb, attribute_key)
+      create_instance_with_methods(with_method_symb, attribute_key)
+      create_setter_methods(setter_symb, attribute_key)
     end
   end
 
-  def build_equal_attribute(name, value)
-    "#{name} = '#{value}'"
+  def self.create_singleton_with_methods(name, attribute_key)
+    define_singleton_method name do |attribute_value|
+      object = new
+      object.add_attribute object.build_equal_attribute(attribute_key, attribute_value)
+      object
+    end
+  end
+
+  def self.create_instance_with_methods(name, attribute_key)
+    define_method name do |attribute_value|
+      add_attribute build_equal_attribute(attribute_key, attribute_value)
+      self
+    end
+  end
+
+  def self.create_setters_methods(name, attribute_key)
+    define_method name do |attribute_value|
+      add_attribute build_equal_attribute(attribute_key, attribute_value)
+      self
+    end
   end
 
   attributes(:text, :accessibility_label, :id)
@@ -229,9 +235,15 @@ class BaseComponent
     spices.element_does_not_exist query_string
   end
 
+  # attribute related
+
   def add_attribute(attribute)
     # TODO: check if attribute is already there before pushing it, replace otherwise
     attributes.push attribute
+  end
+
+  def build_equal_attribute(name, value)
+    "#{name} = '#{value}'"
   end
 
   private
