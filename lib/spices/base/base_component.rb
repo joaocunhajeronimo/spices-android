@@ -138,7 +138,7 @@ class BaseComponent
   end
 
   def tab_bar_button
-    TabbarButton.with_parent self
+    TabBarButton.with_parent self
   end
 
   def table_view_cell
