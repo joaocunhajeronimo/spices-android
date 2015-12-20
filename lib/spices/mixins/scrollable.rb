@@ -37,9 +37,9 @@ module Scrollable
   end
 
   def content_size
-    contentSize = self[:query, :contentSize]
-    contentSize ||= scroll_view[:query, :contentSize]
-    contentSize[/{(.*?)}/m, 1].split(', ')
+    size = self[:query, :contentSize]
+    size ||= scroll_view[:query, :contentSize]
+    size[/{(.*?)}/m, 1].split(', ')
   end
 
   def content_offset_x
@@ -51,6 +51,8 @@ module Scrollable
   end
 
   def content_offset
-    self[:contentOffset]
+    offset = self[:contentOffset]
+    offset ||= scroll_view[:contentOffset]
+    offset
   end
 end
