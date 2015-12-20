@@ -30,7 +30,7 @@ class BaseComponent
     end
   end
 
-  def self.create_setters_methods(name, attribute_key)
+  def self.create_setter_methods(name, attribute_key)
     define_method name do |attribute_value|
       add_attribute build_equal_attribute(attribute_key, attribute_value)
       self
