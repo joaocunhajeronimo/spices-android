@@ -8,11 +8,11 @@ class Switch < BaseComponent
   end
 
   def on?
-    property_is_on == 1
+    property_is_on
   end
 
   def off?
-    property_is_on == 0
+    !property_is_on
   end
 
   private
