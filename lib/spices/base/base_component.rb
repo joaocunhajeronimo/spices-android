@@ -3,19 +3,37 @@ class BaseComponent
   attr_reader :descendants
   attr_reader :attributes
 
+  def self.attributes(*args)
+    args.each do |arg|
+      with_method_symb = :"with_#{arg}"
+      attribute_key = arg.to_s.split('_').inject([]) { |a, e| a.push(buffer.empty? ? e : e.capitalize) }.join
+
+      define_singleton_method with_method_symb do |attribute_value|
+        object = new
+        object.add_attribute object.build_equal_attribute(attribute_key, attribute_value)
+        object
+      end
+
+      define_method with_method_symb do |attribute_value|
+        add_attribute build_equal_attribute(attribute_key, attribute_value)
+        self
+      end
+
+      setter_symb = :"#{arg}="
+      define_method setter_symb do |attribute_value|
+        add_attribute build_equal_attribute(attribute_key, attribute_value)
+        self
+      end
+    end
+  end
+
+  def build_equal_attribute(name, value)
+    "#{name} = '#{value}'"
+  end
+
+  attributes(:text, :accessibility_label, :id)
+
   # initializers
-
-  def self.with_text(text)
-    object = new
-    object.attributes.push "text = '#{text}'"
-    object
-  end
-
-  def self.with_accessibility_label(accessibility_label)
-    object = new
-    object.attributes.push "accessibilityLabel = '#{accessibility_label}'"
-    object
-  end
 
   def self.with_parent(parent)
     object = new
@@ -41,28 +59,20 @@ class BaseComponent
     object
   end
 
-  def with_attribute(attribute)
-    attributes.push attribute
-    self
-  end
-
-  def with_text(text)
-    attributes.push "text = '#{text}'"
-    self
-  end
+  # instance
 
   def with_parent(parent)
     @parent = parent
     self
   end
 
-  def with_accessibility_label(accessibility_label)
-    attributes.push "accessibilityLabel = '#{accessibility_label}'"
+  def with_descendants(descendants)
+    @descendants = descendants
     self
   end
 
-  def with_descendants(descendants)
-    @descendants = descendants
+  def with_attribute(attribute)
+    attributes.push attribute
     self
   end
 
@@ -74,16 +84,6 @@ class BaseComponent
 
   def all
     @all = true
-    self
-  end
-
-  def text=(text)
-    @text = text
-    self
-  end
-
-  def accessibility_label=(accessibility_label)
-    @accessibility_label = accessibility_label
     self
   end
 
@@ -231,6 +231,11 @@ class BaseComponent
 
   private
 
+  def add_attribute(attribute)
+    # TODO: check if attribute is already there before pushing it, replace otherwise
+    attributes.push attribute
+  end
+
   def spices
     Spices.world
   end
@@ -243,7 +248,7 @@ class BaseComponent
 
   def safe_query(query, *args)
     Logger.debug "QUERY: #{query}"
-    
+
     wait_for_visible
 
     query_map = spices.query(query, *args)
