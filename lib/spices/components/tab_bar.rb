@@ -1,6 +1,6 @@
 class TabBar < BaseComponent
   def titles
-    tab_bar_button.label.all['title']
+    tab_bar_button.label.all['text']
   end
 
   def selected_title
