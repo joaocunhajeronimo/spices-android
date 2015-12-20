@@ -1,7 +1,7 @@
-class TabBarButton < BaseComponent
+class TabBarItem < BaseComponent
   private
 
   def type
-    :tabBarButton
+    :tabBarItem
   end
 end
