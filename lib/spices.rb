@@ -1,5 +1,3 @@
-require 'cucumber'
-
 # TODO: Automatic creation of type method
 # TODO: Automatic creation of component classes that are empty
 class Spices

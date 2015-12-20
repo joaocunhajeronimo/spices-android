@@ -6,7 +6,7 @@ class BaseComponent
   def self.attributes(*args)
     args.each do |arg|
       with_method_symb = :"with_#{arg}"
-      attribute_key = arg.to_s.split('_').inject([]) { |a, e| a.push(buffer.empty? ? e : e.capitalize) }.join
+      attribute_key = arg.to_s.split('_').inject([]) { |a, e| a.push(a.empty? ? e : e.capitalize) }.join
 
       define_singleton_method with_method_symb do |attribute_value|
         object = new
@@ -229,12 +229,12 @@ class BaseComponent
     spices.element_does_not_exist query_string
   end
 
-  private
-
   def add_attribute(attribute)
     # TODO: check if attribute is already there before pushing it, replace otherwise
     attributes.push attribute
   end
+
+  private
 
   def spices
     Spices.world
