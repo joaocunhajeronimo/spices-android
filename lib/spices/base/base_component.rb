@@ -213,12 +213,12 @@ class BaseComponent
 
   # visible
 
-  def wait_for_visible
-    Wait.for { visible? }
+  def wait_for_visible(timeout)
+    Wait.for(timeout) { visible? }
   end
 
-  def wait_for_not_visible
-    Wait.for { not_visible? }
+  def wait_for_not_visible(timeout)
+    Wait.for(timeout) { not_visible? }
   end
 
   def visible?
@@ -249,7 +249,7 @@ class BaseComponent
   def safe_query(query, *args)
     Logger.debug "QUERY: #{query}"
 
-    wait_for_visible
+    wait_for_visible 15
 
     query_map = spices.query(query, *args)
     query_map = query_map.first unless @all
@@ -258,7 +258,7 @@ class BaseComponent
   end
 
   def safe_touch(touch_query)
-    wait_for_visible
+    wait_for_visible 15
 
     spices.touch touch_query
     Wait.for_ui_animation_to_end
