@@ -137,8 +137,8 @@ class BaseComponent
     Switch.with_parent self
   end
 
-  def tab_bar_item
-    TabBarItem.with_parent self
+  def tab_bar_button
+    TabBarButton.with_parent self
   end
 
   def table_view_cell
