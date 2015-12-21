@@ -109,6 +109,10 @@ class BaseComponent
     query_properties(*args)
   end
 
+  def []=(*keys, value)
+    query_properties(*keys, value)
+  end
+
   # abstract
 
   def type
