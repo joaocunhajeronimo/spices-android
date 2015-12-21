@@ -10,6 +10,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.homepage    = 'http://rubygems.org/gems/spices'
   s.license     = 'MIT'
-  s.add_dependency 'calabash-cucumber', ['>= 0.16', '< 0.17']
+  # s.add_dependency 'calabash-cucumber', ['>= 0.16', '< 0.17']
   s.add_dependency 'byebug'
 end
