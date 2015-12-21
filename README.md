@@ -73,6 +73,8 @@ It is a also possible to wait for an element to be visible or invisible before m
 $ label.wait_for_visible 30 
 ```
 
+### Properties
+
 If you want to query properties of this component you can use the `[]` method
 
 ```
