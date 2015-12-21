@@ -27,7 +27,6 @@ require 'spices/base/base_screen'
 require 'spices/components/edit_text'
 require 'spices/components/checkbox'
 
-# iOS
 require 'spices/components/alert'
 require 'spices/components/progress_view'
 require 'spices/components/image_view'
