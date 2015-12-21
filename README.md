@@ -1,7 +1,5 @@
 # Spices
-_A structured layer that goes on top of Calabash_
-
-Spices provides you with a structured class architecture to query and interact with Calabash
+_Component objects framework for Calabash_
 
 ## Warning
 
