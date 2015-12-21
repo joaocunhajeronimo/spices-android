@@ -1,6 +1,6 @@
 require 'spices/mixins/editable'
 
-class Textfield < BaseComponent
+class EditText < BaseComponent
   include Editable
 
   private
