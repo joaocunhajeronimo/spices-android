@@ -257,7 +257,7 @@ class BaseComponent
   end
 
   def query_properties(*args)
-    properties = spices.map(query_string, *args)
+    properties = spices.query(query_string, *args)
     properties = properties.first unless @all
     properties
   end
