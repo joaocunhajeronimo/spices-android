@@ -22,10 +22,15 @@ end
 
 require 'spices/base/base_component'
 require 'spices/base/base_screen'
+
+# Android
+require 'spices/components/edit_text'
+require 'spices/components/checkbox'
+
+# iOS
 require 'spices/components/alert'
 require 'spices/components/progress_view'
 require 'spices/components/image_view'
-require 'spices/components/checkbox'
 require 'spices/components/activity_indicator_view'
 require 'spices/components/stepper'
 require 'spices/components/slider'
