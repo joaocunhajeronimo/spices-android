@@ -27,7 +27,7 @@ require 'spices/base/base_screen'
 
 require 'spices/components/alert'
 require 'spices/components/button'
-require 'spices/components/checkbox'
+require 'spices/components/check_box'
 require 'spices/components/edit_text'
 require 'spices/components/image_view'
 require 'spices/components/image_button'
