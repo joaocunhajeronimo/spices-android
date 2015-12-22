@@ -1,4 +1,4 @@
-class Checkbox < BaseComponent
+class CheckBox < BaseComponent
   def check
     touch if unchecked?
   end
