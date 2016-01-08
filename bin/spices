@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'fileutils'
+
+cmd = ARGV.shift
+if cmd == 'console'
+  puts 'Spicing calabash up'
+  calabash_path = `bundle show calabash-android`.strip + '/scripts/.irbrc'
+  File.open(calabash_path, 'a') do |file|
+    file.puts "require 'spices'\n"
+    file.puts "Spices.world = self\n"
+  end
+
+  exec 'calabash-android console'
+  exit 0
+end

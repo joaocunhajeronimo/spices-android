@@ -1,6 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'spices-android'
   s.version     = '0.0.0'
+  s.executables << 'spices'
   s.date        = '2015-12-28'
   s.summary     = "Component object framework for Calabash"
   s.description = "A gem that makes the use of Calabash way simpler and straightforward"
