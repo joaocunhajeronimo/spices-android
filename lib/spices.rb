@@ -1,5 +1,3 @@
-# TODO: Automatic creation of type method
-# TODO: Automatic creation of component classes that are empty
 class Spices
   attr_accessor :world
 
@@ -16,15 +14,9 @@ class Spices
   end
 end
 
-Before do
-  Spices.world = self
-end
+Spices.world = self
 
 require 'spices/base/base_component'
-require 'spices/base/base_screen'
-
-# Android
-
 require 'spices/components/alert'
 require 'spices/components/button'
 require 'spices/components/check_box'
