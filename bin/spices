@@ -12,6 +12,7 @@ if cmd == 'console'
     file.puts "Spices.world = self\n"
   end
 
-  exec 'calabash-android console'
+  apk = ARGV.shift
+  exec "calabash-android console #{apk}"
   exit 0
 end
