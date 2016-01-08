@@ -14,8 +14,6 @@ class Spices
   end
 end
 
-Spices.world = self
-
 require 'spices/base/base_component'
 require 'spices/components/alert'
 require 'spices/components/button'
