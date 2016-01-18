@@ -121,10 +121,6 @@ class BaseComponent
 
   # diggers
 
-  def scroll_view
-    ScrollView.with_parent self
-  end
-
   def label
     Label.with_parent self
   end
