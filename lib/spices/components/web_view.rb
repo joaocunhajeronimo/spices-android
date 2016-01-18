@@ -16,7 +16,7 @@ class WebView < BaseComponent
   end
 
   def evaluate_javascript(javascript)
-    self['query', { calabashStringByEvaluatingJavaScript: javascript }]
+    Spices.world.evaluate_javascript(query_string, javascript)
   end
 
   def url
