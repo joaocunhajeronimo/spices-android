@@ -12,13 +12,13 @@ module Scrollable
   end
 
   def scroll_to_top
-    scroll_by_offset -height
+    scroll_by_offset(-height)
   end
 
   private
 
   def scroll_by_offset(offset)
-    Spices.world.query(query_string, {scrollBy: [0, offset] })
+    Spices.world.query(query_string, scrollBy: [0, offset])
   end
 
   def height

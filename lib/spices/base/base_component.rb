@@ -219,11 +219,11 @@ class BaseComponent
 
   # visible
 
-  def wait_for_visible(timeout=15)
+  def wait_for_visible(timeout = 15)
     Wait.for(timeout) { visible? }
   end
 
-  def wait_for_not_visible(timeout=15)
+  def wait_for_not_visible(timeout = 15)
     Wait.for(timeout) { not_visible? }
   end
 
