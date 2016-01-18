@@ -273,6 +273,5 @@ class BaseComponent
     wait_for_visible 15
 
     spices.touch touch_query
-    Wait.for_ui_animation_to_end
   end
 end

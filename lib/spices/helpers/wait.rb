@@ -4,10 +4,4 @@ class Wait
       yield
     end
   end
-
-  def self.for_ui_animation_to_end
-    Spices.world.wait_for_none_animating(timeout: 10, screenshot_on_error: false)
-  rescue => error
-    raise unless error.message.include? "undefined method `wait_for_none_animating'"
-  end
 end
