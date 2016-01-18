@@ -8,47 +8,24 @@ module Scrollable
   end
 
   def scroll_to_bottom
-    scroll_to_end :down
+    scroll_by_offset height
   end
 
   def scroll_to_top
-    scroll_to_end :up
+    scroll_by_offset -height
   end
 
   private
 
+  def scroll_by_offset(offset)
+    Spices.world.query(query_string, {scrollBy: [0, offset] })
+  end
+
+  def height
+    self['height']
+  end
+
   def scroll(direction)
-    self['scroll', direction]
-  end
-
-  def scroll_to_end(direction)
-    while content_offset_y < (content_size_y - height)
-      scroll direction
-      sleep 0.8
-    end
-  end
-
-  def content_size_x
-    content_size.first.to_i
-  end
-
-  def content_size_y
-    content_size.last.to_i
-  end
-
-  def content_size
-    scroll_view[:query, :contentSize][/{(.*?)}/m, 1].split(', ')
-  end
-
-  def content_offset_x
-    content_offset['X']
-  end
-
-  def content_offset_y
-    content_offset['Y']
-  end
-
-  def content_offset
-    scroll_view[:contentOffset]
+    Spices.world.scroll(query_string, direction)
   end
 end
