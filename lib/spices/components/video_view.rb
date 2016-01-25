@@ -8,8 +8,8 @@ class VideoView < View
   end
 
   def duration
-    duration = video_view = Spices.world.query('videoView', 'getDuration')[0]
+    duration = Spices.world.query('videoView', 'getDuration')[0]
     # self query does not seem to work for 'getDuration': self['query', 'getDuration']
-    duration/1000
+    duration / 1000
   end
 end
