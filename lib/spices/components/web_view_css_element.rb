@@ -3,7 +3,7 @@ class WebViewCssElement < BaseComponent
 
   def child(child_css)
     element = self
-    element.css = css.insert -1, (' ' + child_css)
+    element.css = css.insert(-1, (' ' + child_css))
     element
   end
 
