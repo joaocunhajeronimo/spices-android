@@ -37,7 +37,7 @@ class BaseComponent
     end
   end
 
-  attributes(:text, :accessibility_label, :id)
+  attributes(:text, :accessibility_label, :id, :contentDescription)
 
   # initializers
 
