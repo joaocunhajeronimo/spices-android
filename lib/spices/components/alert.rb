@@ -1,20 +1,16 @@
-class Alert < BaseComponent
-  attr_accessor :title
-  attr_accessor :msg
-
-  def self.with_title_and_msg(title, msg)
-    object = new
-    title_descendent = Label.with_text title
-    msg_descendent = Label.with_text msg
-    object.descendants = [title_descendent, msg_descendent]
-    object
+require_relative 'dialog_title'
+# Alert will be composed by to separate components.
+# Note then when creating an Alert using the with_text method, the text will correspond to the title and not the message.
+# TODO: make this an unified component like on iOS
+# TODO: allow for a with_message initializer
+class Alert < DialogTitle
+  # this methos is not actually necessary
+  def title
+    self['text']
   end
 
-  def type
-    if Spices.world.server_version['iOS_version'] == '7.1.0'
-      :'view:\'_UIModalItemRepresentationView\''
-    else
-      :'view:\'_UIAlertControllerView\''
-    end
+  #TODO: find a better way to implement an Alert and query both title and message
+  def message
+    TextView.with_id('message')['text']
   end
 end
