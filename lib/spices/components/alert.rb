@@ -1,16 +1,48 @@
-require_relative 'dialog_title'
-# Alert will be composed by to separate components.
-# Note then when creating an Alert using the with_text method, the text will correspond to the title and not the message.
-# TODO: make this an unified component like on iOS
-# TODO: allow for a with_message initializer
-class Alert < DialogTitle
-  # this methos is not actually necessary
-  def title
-    self['text']
+class Alert < BaseComponent
+  attr_accessor :title
+  attr_accessor :msg
+
+  def initialize
+    title_descendent = DialogTitle.new
+    msg_descendent = TextView.new
+    self.descendants = [title_descendent, msg_descendent]
   end
 
-  #TODO: find a better way to implement an Alert and query both title and message
+  def self.with_title(title)
+    object = new
+    title_descendent = DialogTitle.with_text title
+    msg_descendent = TextView.new
+    object.descendants = [title_descendent, msg_descendent]
+    object
+  end
+
+  def self.with_msg(msg)
+    object = new
+    title_descendent = DialogTitle.new
+    msg_descendent = TextView.with_text msg
+    object.descendants = [title_descendent, msg_descendent]
+    object
+  end
+
+  def self.with_title_and_msg(title, msg)
+    object = new
+    title_descendent = DialogTitle.with_text title
+    msg_descendent = TextView.with_text msg
+    object.descendants = [title_descendent, msg_descendent]
+    object
+  end
+
   def message
-    TextView.with_id('message')['text']
+    TextView.with_parent(self)['text']
+  end
+
+  def title
+    DialogTitle.with_parent(self)['text']
+  end
+
+  private
+
+  def type
+    :'android.widget.LinearLayout'
   end
 end
