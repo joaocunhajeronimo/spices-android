@@ -1,6 +1,6 @@
 class VideoView < BaseComponent
   def playing?
-    self['query', 'isPlaying']
+    Spices.world.query(query_string, 'isPlaying')[0]
   end
 
   def duration
