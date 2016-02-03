@@ -1,7 +1,10 @@
 class Wait
   def self.for(timeout = 15, &_block)
-    Spices.world.wait_for(timeout: timeout, retry_frequency: 0.5, screenshot_on_error: true) do
-      yield
+    begin
+      Spices.world.wait_for(timeout: timeout, retry_frequency: 0.5, screenshot_on_error: false, &_block)
+    rescue => error
+      # This allows for 'fail' method to be overriden when wait fails
+      Spices.world.fail "Failed. Error: \n#{error}"
     end
   end
 
@@ -21,7 +24,7 @@ class Wait
   end
 
   def self.for_and_do(test, &_block)
-    Spices.world.wait_poll(timeout: 15, timeout_message: '', until: test) do
+    Spices.world.wait_poll(timeout: 15, timeout_message: '', screenshot_on_error: false, until: test) do
       yield
     end
   end
